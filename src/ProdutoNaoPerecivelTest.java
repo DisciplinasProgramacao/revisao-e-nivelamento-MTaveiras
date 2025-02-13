@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class ProdutoTest {
+public class ProdutoNaoPerecivelTest {
 
     static Produto produto;
         
     
     @BeforeAll
     static public void prepare(){
-        produto = new Produto("Produto teste", 100, 0.1);
+        produto = new ProdutoNaoPerecivel("Produto teste", 100, 0.1);
     }
     
     @Test
@@ -28,11 +28,12 @@ public class ProdutoTest {
 
     @Test
     public void naoCriaProdutoComPrecoNegativo(){
-        assertThrows(IllegalArgumentException.class, () -> new Produto("teste", -5, 0.5));
+        assertThrows(IllegalArgumentException.class, () -> new ProdutoNaoPerecivel("teste", -5, 0.5));
     }
     
     @Test
     public void naoCriaProdutoComMargemNegativa(){
-        assertThrows(IllegalArgumentException.class, () -> new Produto("teste", 5, -1));
+        assertThrows(IllegalArgumentException.class, () -> new ProdutoNaoPerecivel("teste", 5, -1));
     }
+
 }

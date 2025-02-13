@@ -24,11 +24,11 @@ import java.text.NumberFormat;
  * SOFTWARE.
  */
 
-public class Produto {
+public abstract class Produto {
     private static final double MARGEM_PADRAO = 0.2;
     private String descricao;
-    private double precoCusto;
-    private double margemLucro;
+    protected double precoCusto;
+    protected double margemLucro;
      
     
         
@@ -59,7 +59,7 @@ public class Produto {
      * @param estoqueMinimo Estoque mínimo (mínimo 0)
      * @param validade Data de validade passada como parâmetro
      */
-    public Produto(String desc, double precoCusto, double margemLucro){
+    protected Produto(String desc, double precoCusto, double margemLucro){
         init(desc, precoCusto, margemLucro);
     }
 
@@ -72,7 +72,7 @@ public class Produto {
      * @param quant Quantidade atual no estoque (mínimo 0)
      * @param validade Data de validade passada como parâmetro
      */
-    public Produto(String desc, double precoCusto){
+    protected Produto(String desc, double precoCusto){
         init(desc, precoCusto, MARGEM_PADRAO);
     }
 
@@ -80,11 +80,10 @@ public class Produto {
      * Retorna o valor de venda do produto, considerando seu preço de custo e margem de lucro
      * @return Valor de venda do produto (double, positivo)
      */
-    public double valorDeVenda(){
+    public double valorDeVenda() {
         return precoCusto * (1+margemLucro);
-    }        
+    }
     
-
     /**
      * Descrição em string do produto, contendo sua descrição e o valor de venda.
      *  @return String com o formato:
